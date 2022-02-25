@@ -6,7 +6,8 @@
 #         self.right = right
 class Solution:
     def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        res=[]
+        res = []
+
         def solve(root):
             if root:
                 res.append(root.val)
