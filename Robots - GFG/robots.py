@@ -1,27 +1,30 @@
 class Solution:
-    def moveRobots (self, s1, s2):
-        temp1=s1.replace("#", "")
-        temp2=s2.replace("#", "")
-        if temp1!=temp2:
+    def moveRobots(self, s1, s2):
+        temp1 = s1.replace("#", "")
+        temp2 = s2.replace("#", "")
+        if temp1 != temp2:
             return "No"
-        n=len(s1)
-        cnt=0
+        n = len(s1)
+        cnt = 0
+        # B can move from Left to Right!
         for i in range(n):
-            if s1[i]=='B':
-                cnt+=1
-            if s2[i]=='B':
-                cnt-=1
-            if cnt<0:
+            if s1[i] == 'B':
+                cnt += 1
+            if s2[i] == 'B':
+                cnt -= 1
+            if cnt < 0:
                 return "No"
-        cnt=0
+        cnt = 0
+        # A can move from Right to Left!
         for i in range(n)[::-1]:
-            if s1[i]=='A':
-                cnt+=1
-            if s2[i]=='A':
-                cnt-=1
-            if cnt<0:
+            if s1[i] == 'A':
+                cnt += 1
+            if s2[i] == 'A':
+                cnt -= 1
+            if cnt < 0:
                 return "No"
         return "Yes"
+        
 #{ 
 #  Driver Code Starts
 #Initial Template for Python 3
