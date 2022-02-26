@@ -8,11 +8,12 @@ class Solution:
             dp[i][j] = 1+self.lcs(i+1, j+1, m, n, s1, s2, dp)
             return dp[i][j]
         else:
-            dp[i][j] = max(self.lcs(i+1, j, m, n, s1, s2, dp), self.lcs(i, j+1, m, n, s1, s2, dp))
+            dp[i][j] = max(self.lcs(i+1, j, m, n, s1, s2, dp),
+                           self.lcs(i, j+1, m, n, s1, s2, dp))
             return dp[i][j]
 
     def longestCommonSubsequence(self, s1: str, s2: str) -> int:
-            m=len(s1)
-            n = len(s2)
-            dp = [[-1 for _ in range(n+1)] for _ in range(m+1)]
-            return self.lcs(0, 0, m, n, s1, s2, dp)
+        m = len(s1)
+        n = len(s2)
+        dp = [[-1 for _ in range(n+1)] for _ in range(m+1)]
+        return self.lcs(0, 0, m, n, s1, s2, dp)
