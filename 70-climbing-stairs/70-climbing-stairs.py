@@ -3,7 +3,7 @@ class Solution:
         dp = [0]*(n+1)
 
         def solve(n):
-            if n==0 or n==1 or n==2 or n==3:
+            if n < 4:
                 return n
             if dp[n] != 0:
                 return dp[n]
