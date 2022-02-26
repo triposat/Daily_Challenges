@@ -4,20 +4,22 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
+
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         if not root:
             return None
-        q=[root]
-        res=[]
-        while q:
-            temp=[]
-            for i in range(len(q)):
-                ele=q.pop(0)
+        que = [root]
+        res = []
+        while que:
+            temp = []
+            for _ in range(len(que)):
+                ele = que.pop(0)
                 temp.append(ele.val)
                 if ele.left:
-                    q.append(ele.left)
+                    que.append(ele.left)
                 if ele.right:
-                    q.append(ele.right)
+                    que.append(ele.right)
             res.append(temp)
         return res
