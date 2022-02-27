@@ -5,7 +5,7 @@ class Solution:
         if not S.count("0") or not S.count("1") or not S.count("2"):
             return -1
         for idx, val in enumerate(S):
-            ans[int(val)]=idx+1
+            ans[int(val)]=idx
             if -1 not in ans:
                 ma = min(ma, max(ans)-min(ans))
         return ma+1
