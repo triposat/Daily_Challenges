@@ -5,12 +5,17 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+    def invertTree(self, node: Optional[TreeNode]) -> Optional[TreeNode]:
         # Iterative Approach
-        stack = [root]
-        while stack:
-            node = stack.pop()
-            if node:
-                node.left, node.right = node.right, node.left
-                stack += node.left, node.right
-        return root
+        # stack = [root]
+        # while stack:
+        #     node = stack.pop()
+        #     if node:
+        #         node.left, node.right = node.right, node.left
+        #         stack += node.left, node.right
+        # return root
+        
+        # Recursive Approach
+        if node:
+            node.left, node.right = self.invertTree(node.right), self.invertTree(node.left)
+            return node
