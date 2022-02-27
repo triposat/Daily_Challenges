@@ -1,14 +1,14 @@
 class Solution:
     def smallestSubstring(self, S):
-        ans = [-1, -1, -1]
-        ma=(1<<31)
+        res = [-1, -1, -1]
+        maxi = (1 << 31)
         if not S.count("0") or not S.count("1") or not S.count("2"):
             return -1
         for idx, val in enumerate(S):
-            ans[int(val)]=idx
-            if -1 not in ans:
-                ma = min(ma, max(ans)-min(ans))
-        return ma+1
+            res[int(val)] = idx
+            if -1 not in res:
+                maxi = min(maxi, max(res)-min(res))
+        return maxi+1
         
 #{ 
 #  Driver Code Starts
