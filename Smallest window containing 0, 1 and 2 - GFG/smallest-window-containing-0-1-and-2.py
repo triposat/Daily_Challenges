@@ -2,12 +2,12 @@ class Solution:
     def smallestSubstring(self, S):
         pos=[-333333]*3
         ans=99999
+        if not S.count("0") or not S.count("1") or not S.count("2"):
+            return -1
         for i, ch in enumerate(S):
             pos[int(ch)]=i
-            # print(pos)
             ans=min(ans,max(pos)-min(pos)+1)
-            # print(pos, ans)
-        return -1 if ans==99999 else ans
+        return ans
         
 
 #{ 
