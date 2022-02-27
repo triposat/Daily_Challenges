@@ -1,16 +1,16 @@
 class Solution:
-    def minimumTime(self, time: List[int], tt: int) -> int:
+    def minimumTime(self, time: List[int], totalTrips: int) -> int:
         def solve(mid):
-            sum=0
-            for hey in time:
-                sum+=mid//hey
-            return sum
-        s=1
-        e=tt*min(time)
-        while s<e:
-            mid = (s+e)>>1
-            if solve(mid)>=tt:
-                e=mid
+            res = 0
+            for i in time:
+                res += mid//i
+            return res
+        left = 1
+        right = totalTrips*min(time)
+        while left < right:
+            mid = (left+right) >> 1
+            if solve(mid) >= totalTrips:
+                right = mid
             else:
-                s=mid+1
-        return s
+                left = mid+1
+        return left
