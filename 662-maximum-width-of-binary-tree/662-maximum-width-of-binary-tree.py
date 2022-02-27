@@ -13,7 +13,7 @@ class Solution:
         while q:
             size=len(q)
             mini=q[0][1]
-            # width = max(width, q[-1][0]-q[0][0]+1) 
+            width = max(width, q[-1][1]-q[0][1]+1) 
             first, last = 0,0
             for i in range(size):
                 node=q[0][0]
@@ -27,5 +27,5 @@ class Solution:
                     q.append((node.left, 2*curr+1))
                 if node.right:
                     q.append((node.right, 2*curr+2))
-            width=max(width, last-first+1)
+            # width=max(width, last-first+1)
         return width
