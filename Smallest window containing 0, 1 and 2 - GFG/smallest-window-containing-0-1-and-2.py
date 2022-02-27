@@ -1,15 +1,15 @@
 class Solution:
     def smallestSubstring(self, S):
-        pos=[-333333]*3
-        ans=99999
+        ans = [-1, -1, -1]
+        ma=(1<<31)
         if not S.count("0") or not S.count("1") or not S.count("2"):
             return -1
-        for i, ch in enumerate(S):
-            pos[int(ch)]=i
-            ans=min(ans,max(pos)-min(pos)+1)
-        return ans
+        for idx, val in enumerate(S):
+            ans[int(val)]=idx+1
+            if -1 not in ans:
+                ma = min(ma, max(ans)-min(ans))
+        return ma+1
         
-
 #{ 
 #  Driver Code Starts
 #Initial Template for Python 3
