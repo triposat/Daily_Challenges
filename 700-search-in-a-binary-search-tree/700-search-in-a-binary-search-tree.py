@@ -9,9 +9,9 @@ class Solution:
         if not root:
             return None
         while root:
-            if root.val==val or root==None:
+            if root.val == val or root == None:
                 return root
-            if root.val>val:
+            if root.val > val:
                 root = root.left
             else:
-                root=root.right
+                root = root.right
