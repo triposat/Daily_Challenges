@@ -1,5 +1,6 @@
 class Solution:
     def countBits(self, n: int) -> List[int]:
+        @lru_cache(None)
         def solve(n):
             if n==0:
                 return 0
