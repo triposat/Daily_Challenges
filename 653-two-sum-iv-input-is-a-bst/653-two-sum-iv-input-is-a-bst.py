@@ -14,10 +14,10 @@ class Solution:
                 res.append(root.val)
                 solve(root.right)
         solve(root)
-        hashMap={}
+        hashMap = {}
         for idx, val in enumerate(res):
-            rem=k-res[idx]
+            rem = k-res[idx]
             if rem in hashMap:
                 return True
-            hashMap[val]=idx
+            hashMap[val] = idx
         return False
