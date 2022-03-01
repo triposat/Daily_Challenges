@@ -12,8 +12,7 @@ class Solution:
         while root:
             if root.val in range(p.val, q.val+1) or root.val in range(q.val, p.val+1):
                 return root
-            if root.val<p.val:
+            if root.val < p.val:
                 root = root.right
             else:
-                root=root.left
-            
+                root = root.left
