@@ -1,19 +1,20 @@
 from collections import defaultdict
+
+
 class Solution:
-    def countPairs(self, N, x, num): 
-        mape=defaultdict(int)
-        x=str(x)
-        for ele in num:
-            ele=str(ele)
-            if x.startswith(ele) or x.endswith(ele):
-                mape[ele]+=1
-        # print(mape)
-        ans=0
-        for ele in list(mape):
-            if x==2*ele:
-                ans+=(mape[ele])*(mape[ele]-1)
-            elif x.endswith(ele):
-                ans+=(mape[ele])*mape[x[:-len(ele)]]
+    def countPairs(self, N, X, numbers):
+        hasMap = defaultdict(int)
+        X = str(X)
+        for ele in numbers:
+            ele = str(ele)
+            if X.startswith(ele) or X.endswith(ele):
+                hasMap[ele] += 1
+        ans = 0
+        for ele in list(hasMap):
+            if X == 2*ele:
+                ans += (hasMap[ele])*(hasMap[ele]-1)
+            elif X.endswith(ele):
+                ans += (hasMap[ele])*hasMap[X[:-len(ele)]]
         return ans
             
 #{ 
