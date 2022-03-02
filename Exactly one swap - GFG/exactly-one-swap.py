@@ -1,15 +1,14 @@
 from collections import Counter
-#User function Template for python3
 class Solution:
-    def countStrings(self, S): 
-        n=len(S)
-        if len(set(S))==len(S):
+    def countStrings(self, S):
+        n = len(S)
+        if len(set(S)) == len(S):
             return n*(n-1)//2
-        S=Counter(S)
-        S=list(S.values())
-        res=0
+        S = Counter(S)
+        S = list(S.values())
+        res = 0
         for i in range(len(S)):
-            res+=S[i]*sum(S[i+1:])
+            res += S[i]*sum(S[i+1:])
         return res+1
 
 #{ 
