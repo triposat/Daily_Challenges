@@ -3,17 +3,17 @@ class Solution:
     def knapSack(self, W, wt, val, n):
         def solve(W, wt, val, n, dp):
             if W == 0 or n == 0:
-                dp[n][W]=0
+                dp[n][W] = 0
                 return dp[n][W]
-            if dp[n][W]!=-1:
+            if dp[n][W] != -1:
                 return dp[n][W]
-            else:
-                if wt[n-1] <= W:
-                    dp[n][W] = max(val[n-1]+solve(W-wt[n-1], wt, val, n-1, dp), solve(W, wt, val, n-1, dp))
-                elif wt[n-1] > W:
-                     dp[n][W] = solve(W, wt, val, n-1, dp)
+            if wt[n-1] <= W:
+                dp[n][W] = max(val[n-1]+solve(W-wt[n-1], wt,
+                                              val, n-1, dp), solve(W, wt, val, n-1, dp))
+            elif wt[n-1] > W:
+                dp[n][W] = solve(W, wt, val, n-1, dp)
             return dp[n][W]
-        dp=[[-1]*(W+1) for _ in range(n+1)]
+        dp = [[-1]*(W+1) for _ in range(n+1)]
         return solve(W, wt, val, n, dp)
 
 #{ 
