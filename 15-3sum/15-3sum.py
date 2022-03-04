@@ -6,7 +6,7 @@ class Solution:
         nums.sort()
         res=[]
         for i in range(n):
-            # if i==0 or nums[i]!=nums[i-1]:
+            if i==0 or nums[i]!=nums[i-1]:
                 tar=-nums[i]
                 left = i+1
                 right=n-1
