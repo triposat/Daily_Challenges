@@ -1,5 +1,3 @@
-# User function Template for Python3
-
 class Solution:
     def equalPartition(self, N, nums):
         total = sum(nums)
