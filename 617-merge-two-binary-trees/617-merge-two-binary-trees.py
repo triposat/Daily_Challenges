@@ -4,22 +4,34 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+# def solve(n, to):
+#     if to==0:
+#         return
+#     n[0] += 1
+#     solve(n, to-1)
+
+# n = int(input())
+# x = [n]
+# solve(x,15)
+# print(x[0])
+
 class Solution:
-    def mergeTrees(self, t1: Optional[TreeNode], t2: Optional[TreeNode]) -> Optional[TreeNode]:
-        
-        if not t1:
-            return t2
-        if not t2:
-            return t1
-        def solve(t1, t2):
-            if not t1:
-                return t2
-            if not t2:
-                return t1
-            res = TreeNode(t1.val+t2.val)
-            res.left = solve(t1.left, t2.left)
-            res.right = solve(t1.right, t2.right)
+    def mergeTrees(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> Optional[TreeNode]:
+
+        if not root1:
+            return root2
+        if not root2:
+            return root1
+
+        def solve(root1, root2):
+            if not root1:
+                return root2
+            if not root2:
+                return root1
+            res = TreeNode(root1.val+root2.val)
+            res.left = solve(root1.left, root2.left)
+            res.right = solve(root1.right, root2.right)
             return res
-        
-        return solve(t1, t2)
+
+        return solve(root1, root2)
         
