@@ -18,10 +18,10 @@
 class Solution:
     def mergeTrees(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> Optional[TreeNode]:
 
-        if not root1:
-            return root2
-        if not root2:
-            return root1
+        # if not root1:
+        #     return root2
+        # if not root2:
+        #     return root1
 
         def solve(root1, root2):
             if not root1:
