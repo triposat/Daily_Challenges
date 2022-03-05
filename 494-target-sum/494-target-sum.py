@@ -14,9 +14,7 @@ class Solution:
     def findTargetSumWays(self, nums: List[int], target: int) -> int:
         nums_sum = sum(nums)
         total = (target + nums_sum)
-        if abs(target) > nums_sum:
-            return 0
-        if total % 2 != 0:
+        if total % 2 != 0 or abs(target) > nums_sum:
             return 0
         else:
             total //= 2
