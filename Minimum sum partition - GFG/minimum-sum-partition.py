@@ -1,6 +1,5 @@
-#User function Template for python3
 class Solution:
-	def minDifference(self, nums, n):
+    def minDifference(self, nums, n):
         def isSubsetSum(n, arr, sum):
             dp = [[0]*(sum+1) for _ in range(n+1)]
             for i in range(n+1):
@@ -14,21 +13,21 @@ class Solution:
                     else:
                         dp[i][j] = dp[i-1][j]
             return dp[-1]
-        tot = sum(nums)
-        hey = isSubsetSum(len(nums), nums, sum(nums))
-        res=[]
-        if tot%2==0:
-            le=len(hey)//2+1
+        total = sum(nums)
+        outp = isSubsetSum(n, nums, total)
+        res = []
+        if total % 2 == 0:
+            till = len(outp)//2+1
         else:
-            le=len(hey)//2
-        for i in range(le):
-            if hey[i]:
+            till = len(outp)//2
+        for i in range(till):
+            if outp[i]:
                 res.append(i)
-        # print(res)
-        ans=(1<<31)
+        ans = (1 << 31)
         for i in range(len(res)):
-                ans = min(ans, tot-2*res[i])
+            ans = min(ans, total-2*res[i])
         return ans
+
 
 #{ 
 #  Driver Code Starts
