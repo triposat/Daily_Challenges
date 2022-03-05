@@ -1,6 +1,3 @@
-#User function Template for python3
-
-#structure of class Node
 '''
 class Node:
     def __init__(self, val):
@@ -8,6 +5,7 @@ class Node:
         self.data = val
         self.left = None
 '''
+
 
 class Solution:
     def findMaxScore(self, root):
