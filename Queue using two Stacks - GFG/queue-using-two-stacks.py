@@ -1,32 +1,17 @@
-#User function Template for python3
+def Push(x, stack1, stack2):
+    stack1.append(x)
 
-#Function to push an element in queue by using 2 stacks.
-def Push(x,s1,s2):
-    '''
-    x: value to push
-    stack1: list
-    stack2: list
-    '''
-    #code here
-    s1.append(x)
-
-#Function to pop an element from queue by using 2 stacks.
-def Pop(s1,s2):
-    
-    '''
-    stack1: list
-    stack2: list
-    '''
-    if not s1:
+def Pop(stack1, stack2):
+    if not stack1:
         return -1
-    for _ in range(len(s1)):
-        s2.append(s1.pop())
-    k=s2.pop()
-    if s2:
-        for _ in range(len(s2)):
-            s1.append(s2.pop())
+    for _ in range(len(stack1)):
+        stack2.append(stack1.pop())
+    k = stack2.pop()
+    if stack2:
+        for _ in range(len(stack2)):
+            stack1.append(stack2.pop())
     return k
-    #code here
+
 
 #{ 
 #  Driver Code Starts
