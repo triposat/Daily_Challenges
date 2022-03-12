@@ -8,14 +8,14 @@ class Node:
 """
 
 class Solution:
-    def copyRandomList(self, head):
-        dic = dict()
-        m = n = head
-        while m:
-            dic[m] = Node(m.val)
-            m = m.next
-        while n:
-            dic[n].next = dic.get(n.next)
-            dic[n].random = dic.get(n.random)
-            n = n.next
-        return dic.get(head)
+    def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
+        hMap = {}
+        x = y = head
+        while x:
+            hMap[x] = Node(x.val)
+            x = x.next
+        while y:
+            hMap[y].next = hMap.get(y.next)
+            hMap[y].random = hMap.get(y.random)
+            y = y.next
+        return hMap.get(head)
