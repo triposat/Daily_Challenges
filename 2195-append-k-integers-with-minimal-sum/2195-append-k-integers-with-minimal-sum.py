@@ -1,9 +1,10 @@
 class Solution:
     def minimalKSum(self, nums: List[int], k: int) -> int:
         hMap = Counter(nums)
+        hMap = sorted(hMap)
         start = 1
         ans = 0
-        for key in sorted(hMap):
+        for key in hMap:
             gap = key-start
             s = start
             e = key
