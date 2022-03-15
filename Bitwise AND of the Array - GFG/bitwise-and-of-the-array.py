@@ -1,27 +1,23 @@
-#     #User function Template for python3
 #     1011
 #     0101
 #     1010
 #     1101
-
-#     1100
-
+# & = 0000
 # X = 1010
 class Solution:
-
-    def count(self, N, A, X): 
-        bitSetinX=0
-        ans=N
+    def count(self, N, A, X):
+        bitSetinX = 0
+        ans = N
         for i in range(32)[::-1]:
-            if (1<<i) & X:
-                bitSetinX |= (1<<i)
+            if (1 << i) & X:
+                bitSetinX |= (1 << i)
             else:
-                temp=bitSetinX | (1<<i)
-                dont=0
+                temp = bitSetinX | (1 << i)
+                dontMdfy = 0
                 for n in A:
-                    if n&temp==temp:
-                        dont+=1
-                ans=min(ans, N-dont)
+                    if n & temp == temp:
+                        dontMdfy += 1
+                ans = min(ans, N-dontMdfy)
         return ans
 
 #{ 
