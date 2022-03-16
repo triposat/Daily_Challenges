@@ -1,10 +1,10 @@
 class Solution:
-    def validateStackSequences(self, pu: List[int], po: List[int]) -> bool:
-        stack=[]
-        i=0
-        for ele in pu:
+    def validateStackSequences(self, pushed: List[int], popped: List[int]) -> bool:
+        stack = []
+        i = 0
+        for ele in pushed:
             stack.append(ele)
-            while stack and stack[-1]==po[i]:
-                i+=1
+            while stack and stack[-1] == popped[i]:
+                i += 1
                 stack.pop()
-        return i==len(po)
+        return i == len(popped)
