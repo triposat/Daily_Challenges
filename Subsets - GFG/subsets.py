@@ -1,9 +1,9 @@
 class Solution:
     def subsets(self, A):
-        outer=[]
+        outer = []
         outer.append([])
         for num in A:
-            n=len(outer)
+            n = len(outer)
             for i in range(n):
                 inner = outer[i][:]
                 inner.append(num)
