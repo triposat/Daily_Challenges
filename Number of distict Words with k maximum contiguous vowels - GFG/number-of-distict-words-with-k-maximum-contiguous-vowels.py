@@ -9,7 +9,7 @@ class Solution:
                 else:
                     dp[i][j] = (21*dp[i-1][k] % mod+5*dp[i-1][j-1] % mod) % mod
         return dp[n][k]
-
+        
 #{ 
 #  Driver Code Starts
 #Initial Template for Python 3
