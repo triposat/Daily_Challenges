@@ -3,7 +3,6 @@ from collections import defaultdict
 
 
 class FreqStack:
-
     def __init__(self):
         self.heap = []
         heapify(self.heap)
@@ -11,9 +10,7 @@ class FreqStack:
         self.count = 0
 
     def push(self, val: int) -> None:
-        seen = self.seen
-        maxHeap = self.heap
-        count = self.count
+        seen, maxHeap, count = self.seen, self.heap, self.count
         seen[val] += 1
         heappush(maxHeap, (-seen[val], -count, val))
         self.count += 1
@@ -24,7 +21,6 @@ class FreqStack:
         rem = heappop(maxHeap)
         seen[rem[2]] -= 1
         return rem[2]
-
 
 # Your FreqStack object will be instantiated and called as such:
 # obj = FreqStack()
