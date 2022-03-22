@@ -1,15 +1,11 @@
 class Solution:
     def partitionLabels(self, s: str) -> List[int]:
-        rightmost = {c:i for i, c in enumerate(s)}
-        left, right = 0, 0
-
-        result = []
-        for i, letter in enumerate(s):
-
-            right = max(right,rightmost[letter])
-
-            if i == right:
-                result += [right-left + 1]
-                left = i+1
-
-        return result
+        label = {val: idx for idx, val in enumerate(s)}
+        l, r = 0, 0
+        res = []
+        for i in range(len(s)):
+            r = max(r, label[s[i]])
+            if i == r:
+                res += [r-l+1]
+                l = i+1
+        return res
