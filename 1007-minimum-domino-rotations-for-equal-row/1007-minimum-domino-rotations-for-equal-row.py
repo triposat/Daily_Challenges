@@ -1,17 +1,11 @@
 class Solution:
-    def minDominoRotations(self, A, B):
-        s, n = set([1,2,3,4,5,6]), len(A)
-        s = set([A[0], B[0]])
-        for i in range(1, n): 
-            s &= set([A[i], B[i]])
-            # print(s)
-        if not s: return -1
-        flips1 = sum(A[i] == list(s)[0] for i in range(n))
-        flips2 = sum(B[i] == list(s)[0] for i in range(n))
-        return min(n - flips1, n - flips2) 
-    
-# 3 5 1 2 3
-# 3 6 3 3 4
-
-# 2 1 2 4 2 2
-# 5 2 6 2 3 2
+    def minDominoRotations(self, tops: List[int], bottoms: List[int]) -> int:
+        n = len(tops)
+        s = set([tops[0], bottoms[0]])
+        for i in range(1, n):
+            s &= set([tops[i], bottoms[i]])
+        if not s:
+            return -1
+        flipsA = sum(tops[i] == list(s)[0] for i in range(n))
+        flipsB = sum(bottoms[i] == list(s)[0] for i in range(n))
+        return min(n-flipsA, n-flipsB)
