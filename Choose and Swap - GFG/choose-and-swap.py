@@ -1,33 +1,23 @@
 class Solution:
-    def chooseandswap (self, A):
-       # code here
-       l = len(A)
-       covered = set()
-       for i in range(l):
-           smaller = A[i]
-           covered.add(smaller)
-           for j in A[i+1:]:
-               if j<smaller and j not in covered:
-                   smaller = j
-           if smaller != A[i]:
-               break
-       if smaller == A[i]:
-           return A
-       temp = A[i]
-       res = ""
-       for j in range(l):
-           flag = True
-           if temp == A[j]:
-               flag = False
-               res += smaller
-           elif flag and A[j] == smaller:
-               res += temp
-           else:
-               res+=A[j]
-       return res
-
-
-
+    def chooseandswap(self, arr):
+        arr = list(arr)
+        s = list(set(arr))
+        s.sort()
+        for i in range(len(arr)):
+            if arr[i] in s:
+                s.remove(arr[i])
+            if not s:
+                break
+            ch1 = s[0]
+            if ch1 < arr[i]:
+                ch2 = arr[i]
+                for j in range(len(arr)):
+                    if arr[j] == ch1:
+                        arr[j] = ch2
+                    elif arr[j] == ch2:
+                        arr[j] = ch1
+                break
+        return "".join(arr)
 
 #{ 
 #  Driver Code Starts
