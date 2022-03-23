@@ -19,8 +19,8 @@ def swapkthnode(head, num, k):
         q = q.next
     if startP:
         startP.next = q
-    if endQ:
-        endQ.next = p
+    # if endQ:
+    endQ.next = p
     temp = p.next
     p.next = q.next
     q.next = temp
