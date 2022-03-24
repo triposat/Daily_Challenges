@@ -10,4 +10,3 @@ class Solution:
                 j += 1
         for i in range(j, len(nums)):
             nums[i] = 0
-        # return nums
