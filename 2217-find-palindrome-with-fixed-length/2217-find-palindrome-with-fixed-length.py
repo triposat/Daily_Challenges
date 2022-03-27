@@ -1,28 +1,29 @@
 class Solution:
     def solve(self, q, n):
-        toad = q-1
+        toAdd = q-1
         leng = n//2
-        if n%2==0:
-            hey = int(('1'+'0'*(leng-1)))
-            le=len(str(hey))
-            hey+=toad
-            if len(str(hey))>le:
+        if n % 2 == 0:
+            half = int(('1'+'0'*(leng-1)))
+            hafL = len(str(half))
+            half += toAdd
+            if len(str(half)) > hafL:
                 return -1
-            me =str(hey)
-            me+=me[::-1]
-            return int(me)
+            full = str(half)
+            full += full[::-1]
+            return int(full)
         else:
-            hey = int(('1'+'0'*(leng)))
-            le=len(str(hey))
-            hey+=toad
-            if len(str(hey))>le:
+            half = int(('1'+'0'*(leng)))
+            hafL = len(str(half))
+            half += toAdd
+            if len(str(half)) > hafL:
                 return -1
-            hey=str(hey)
-            me =str(hey)[:-1]
-            hey+=me[::-1]
-            return int(hey)
+            half = str(half)
+            full = str(half)[:-1]
+            half += full[::-1]
+            return int(half)
+
     def kthPalindrome(self, queries: List[int], intLength: int) -> List[int]:
-        res=[]
+        res = []
         for q in queries:
             res.append(self.solve(q, intLength))
         return res
