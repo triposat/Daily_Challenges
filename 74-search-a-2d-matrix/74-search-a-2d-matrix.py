@@ -3,11 +3,12 @@ class Solution:
         start = 0
         col = len(matrix[0])
         row = len(matrix)
-        end = col*row-1
-        while start < end:
-            mid = (start+end) >> 1
-            if matrix[mid//col][mid % col] < target:
-                start = mid+1
+        end = col-1
+        while start<row and end>-1:
+            if matrix[start][end]==target:
+                return True
+            elif matrix[start][end]>target:
+                end-=1
             else:
-                end = mid
-        return matrix[start//col][start % col] == target
+                start+=1
+        return False
