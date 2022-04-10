@@ -1,20 +1,20 @@
 class Encrypter:
-
     def __init__(self, keys: List[str], values: List[str], dictionary: List[str]):
-        self.hmap = dict()
-        self.keyss = keys
+        self.hmap = {}
+        self.keys = keys
         self.dict = dictionary
-        for i in range(len(keys)):
+        for i in range(len(self.keys)):
             self.hmap[keys[i]] = values[i]
-
+            
     def encrypt(self, word1: str) -> str:
         ans = ""
         for i in word1:
-            if i in self.keyss:
+            if i in self.keys:
                 ans += self.hmap[i]
             else:
                 ans = ""
         return ans
+    
     # O(100*100) = 10^4
     def decrypt(self, word2: str) -> int:
         ans = 0
