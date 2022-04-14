@@ -1,22 +1,28 @@
 class Solution:
     def generateMatrix(self, n: int) -> List[List[int]]:
-        res = [[0] * n for _ in range(n)]
-        
-        def fill_circle(el, start, n):
-            i, j = start, start            
-            for k in range(j, j + n): 
-                res[i][k], el = el, el + 1
-            for k in range(i + 1, i + n): 
-                res[k][j + n - 1], el = el, el + 1
-            for k in reversed(range(j, j + n - 1)): 
-                res[i + n - 1][k], el = el, el + 1
-            for k in reversed(range(i + 1, i + n - 1)): 
-                res[k][j], el = el, el + 1
-        
-        el, start = 1, 0
-        while n > 0:
-            fill_circle(el, start, n)
-            el = el + 4*(n - 1)
-            n, start = n - 2, start + 1
-            
-        return res
+        mat = [[0]*n for _ in range(n)]
+        row_bg = 0
+        col_bg = 0
+        row_end = len(mat)
+        col_end = len(mat[0])
+        val=1
+        while row_bg < row_end and col_bg < col_end:
+            for i in range(col_bg, col_end):
+                mat[row_bg][i] = val
+                val+=1
+            row_bg += 1
+            for i in range(row_bg, row_end):
+                mat[i][col_end-1]=val
+                val+=1
+            col_end -= 1
+            if row_bg < row_end:
+                for i in range(col_end-1, col_bg-1, -1):
+                    mat[row_end-1][i]= val
+                    val+=1
+            row_end -= 1
+            if col_bg < col_end:
+                for i in range(row_end-1, row_bg-1, -1):
+                    mat[i][col_bg] = val
+                    val+=1
+            col_bg += 1
+        return mat
