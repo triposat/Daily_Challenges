@@ -5,21 +5,25 @@
 #         self.left = left
 #         self.right = right
 class BSTIterator:
-    def __init__(self, root):
+    def __init__(self, root: Optional[TreeNode]):
         self.stack = []
         while root:
             self.stack.append(root)
             root = root.left
 
-    # @return a boolean, whether we have a next smallest number
-    def hasNext(self):
-        return len(self.stack) > 0
-
-    # @return an integer, the next smallest number
-    def next(self):
+    def next(self) -> int:
         node = self.stack.pop()
-        x = node.right
-        while x:
-            self.stack.append(x)
-            x = x.left
+        temp = node.right
+        while temp:
+            self.stack.append(temp)
+            temp = temp.left
         return node.val
+
+    def hasNext(self) -> bool:
+        return len(self.stack) != 0
+
+
+# Your BSTIterator object will be instantiated and called as such:
+# obj = BSTIterator(root)
+# param_1 = obj.next()
+# param_2 = obj.hasNext()
