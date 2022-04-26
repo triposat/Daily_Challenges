@@ -29,12 +29,12 @@
 # Recursive Solution
 class Solution:
     def maxLevelSum(self, root: Optional[TreeNode]) -> int:
-        levels = defaultdict(int)
-
+        levels = {}
         def ans(root, d):
             if root:
-                levels[d] += root.val
+                levels[d] = levels.get(d,0) + root.val
                 ans(root.left, d+1)
                 ans(root.right, d+1)
         ans(root, 1)
         return max(levels, key=levels.get)
+    
