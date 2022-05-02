@@ -1,6 +1,5 @@
 from heapq import heappop, heappush, heapify
 
-
 class Solution:
     def minimumEffortPath(self, h: List[List[int]]) -> int:
         direc = [[0, 1], [1, 0], [0, -1], [-1, 0]]
