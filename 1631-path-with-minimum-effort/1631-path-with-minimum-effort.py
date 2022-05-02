@@ -14,6 +14,8 @@ class Solution:
             ans = max(ans, ele[0])
             i = ele[1]
             j = ele[2]
+            if h[i][j]==-1:
+                continue
             if i == row-1 and j == col-1:
                 break
             for di in direc:
