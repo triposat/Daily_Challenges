@@ -1,11 +1,9 @@
+# Inplace, Time: O(n), Space: O(1)
 class Solution:
-    def sortArrayByParity(self, A):
-        beg, end = 0, len(A) - 1
-        
-        while beg <= end:
-            if A[beg] % 2 == 0:
-                beg += 1
-            else:
-                A[beg], A[end] = A[end], A[beg]
-                end -= 1
-        return A
+    def sortArrayByParity(self, nums: List[int]) -> List[int]:
+        j = 0
+        for i in range(len(nums)):
+            if nums[i] % 2 == 0:
+                nums[i], nums[j] = nums[j], nums[i]
+                j += 1
+        return nums
