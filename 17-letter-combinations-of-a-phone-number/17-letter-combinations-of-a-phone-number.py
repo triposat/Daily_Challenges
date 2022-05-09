@@ -12,6 +12,8 @@ class Solution:
                 return
             dig = digits[idx]
             for i in list(comb[int(dig)]):
-                dfs(idx+1, out+i)
+                out+=i
+                dfs(idx+1, out)
+                out=out[:-1]
         dfs(0, "")
         return res
