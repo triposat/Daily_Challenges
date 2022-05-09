@@ -1,19 +1,17 @@
 class Solution:
-    def letterCombinations(self, d: str) -> List[str]:
-        if d=="":
+    def letterCombinations(self, digits: str) -> List[str]:
+        if digits == "":
             return []
         comb = [0, 1, 'abc', 'def', 'ghi', 'jkl', 'mno', 'pqrs', 'tuv', 'wxyz']
-        res=[]
-        d = list(d)
-        def ans(idx, me):
-            if idx==len(d):
-                res.append(me)
+        res = []
+        digits = list(digits)
+
+        def dfs(idx, out):
+            if idx == len(digits):
+                res.append(out)
                 return
-            dig = d[idx]
+            dig = digits[idx]
             for i in list(comb[int(dig)]):
-                ans(idx+1, me+i)
-            
-        ans(0, "")
+                dfs(idx+1, out+i)
+        dfs(0, "")
         return res
-        
-        
