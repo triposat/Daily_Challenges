@@ -1,5 +1,5 @@
 class Solution:
-    def countVowelStrings(self, n):
+   def countVowelStrings(self, n):
         seen = {}
         def dp(n, k):
             if k == 1 or n == 1: return k
