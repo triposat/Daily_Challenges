@@ -18,15 +18,27 @@
 #                     return res
 #         return res
 
+# class Solution:
+#     def maximumUnits(self, boxTypes: List[List[int]], truckSize: int) -> int:
+#         boxTypes.sort(key=lambda x: -x[1])
+#         res = 0
+#         for box, units in boxTypes:
+#             if truckSize > box:
+#                 truckSize -= box
+#                 res += (box*units)
+#             else:
+#                 res += (truckSize*units)
+#                 return res
+#         return res
+
+
 class Solution:
     def maximumUnits(self, boxTypes: List[List[int]], truckSize: int) -> int:
         boxTypes.sort(key=lambda x: -x[1])
         res = 0
         for box, units in boxTypes:
-            if truckSize > box:
-                truckSize -= box
-                res += (box*units)
-            else:
-                res += (truckSize*units)
+            res += min(truckSize, box)*units
+            truckSize -= box
+            if truckSize <= 0:
                 return res
         return res
