@@ -1,18 +1,32 @@
+# Time: O(nlogn)
+# Space: O(n)
+# class Solution:
+#     def maximumUnits(self, boxTypes: List[List[int]], truckSize: int) -> int:
+#         boxTypes.sort(key=lambda x: x[1], reverse=True)
+#         temp = 0
+#         res = 0
+#         for b in boxTypes:
+#             prev = temp
+#             if prev >= truckSize:
+#                 break
+#             temp += b[0]
+#             if temp < truckSize:
+#                 res += b[0]*b[1]
+#             else:
+#                 if (truckSize-prev) <= b[0]:
+#                     res += (truckSize-prev)*b[1]
+#                     return res
+#         return res
+
 class Solution:
     def maximumUnits(self, boxTypes: List[List[int]], truckSize: int) -> int:
-        boxTypes.sort(key=lambda x: x[1], reverse=True)
-        t=0
-        ans=0
-        print(boxTypes)
-        for b in boxTypes:
-            prev=t
-            if prev>=truckSize:
-                break
-            t+=b[0]
-            if t<truckSize:
-                ans+=b[0]*b[1]
+        boxTypes.sort(key=lambda x: -x[1])
+        res = 0
+        for box, units in boxTypes:
+            if truckSize > box:
+                truckSize -= box
+                res += (box*units)
             else:
-                if (truckSize-prev)<=b[0]:
-                    ans+=(truckSize-prev)*b[1]
-                    break
-        return ans
+                res += (truckSize*units)
+                return res
+        return res
