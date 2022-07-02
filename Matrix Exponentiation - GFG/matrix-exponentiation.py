@@ -1,45 +1,25 @@
-from typing import List
 class Solution:
-    def matrixMultiplication(self, mat1: List[List[int]], mat2: List[List[int]]) -> List[List[int]]:
-        MOD = 1000000007
-        dim = len(mat1)
-        res = [[0]*dim for _ in range(dim)]
-
-        for i in range(dim):
-            for j in range(dim):
-                for k in range(dim):
-                    res[i][j] = (res[i][j] + ((mat1[i][k] % MOD) * (mat2[k][j] % MOD) % MOD)) % MOD 
-        
-        return res
-
-    def getIdentityMatrix(self, dim):
-        res = [[0]*dim for _ in range(dim)]
-        for i in range(dim):
-            res[i][i] = 1
-        
-        return res
-
-    def matrixExpo(self, matrix: List[List[int]], power: int) -> List[List[int]]:
-        dim = len(matrix)
-        result = self.getIdentityMatrix(dim)
-
-        while power > 0:
-            if power & 1:
-                result = self.matrixMultiplication(result, matrix)
-                power -= 1
-            else:
-                matrix = self.matrixMultiplication(matrix, matrix)
-                power = power >> 1
-        
-        return result
-        
     def FindNthTerm(self, n):
-        if n == 0:
-            return 0
-
-        mat = self.matrixExpo([[0, 1], [1, 1]], n)
-        return mat[1][1]
-
+        m = (10**9)+7
+        def multi(m1, m2):
+            res = [[0, 0], [0, 0]]
+            for i in range(len(m1)):
+                for j in range(len(m2)):
+                    for k in range(len(m1)):
+                        res[i][j] += (m1[i][k]%m)*(m2[k][j]%m)
+            return res
+        m1 = [[1, 1], [1, 0]]
+        m2 = [[1, 1], [1, 0]]
+        while n:
+            if n & 1:
+                m2 = multi(m1, m2)
+                n -= 1
+            else:
+                m1 = multi(m1, m1)
+                n >>= 1
+        return m2[0][1]%m
+	    
+	    
 #{ 
 #  Driver Code Starts
 #Initial Template for Python 3
