@@ -1,24 +1,21 @@
-#User function Template for python3
 from collections import defaultdict
 class Solution:
-    def possible_paths(self, edges, n, s, d):
-        g = defaultdict(set)
-        for frm, to in edges:
-            g[frm].add(to)
-            
-        cnt = 0
-        def dfs(node):
-            nonlocal d, cnt
-            if node == d:
-                cnt += 1
+    def __init__(self):
+        self.ans = 0
+    def dfs(self, s, d, graph):
+            if s==d:
+                self.ans+=1
                 return
-            
-            for nbr in g[node]:
-                dfs(nbr)
+            for x in graph[s]:
+                self.dfs(x, d, graph)
+    def possible_paths(self, edges, n, s, d):
+        res=defaultdict(list)
+        for key, val in edges:
+            res[key].append(val)
+        self.dfs(s, d, res)
+        return self.ans
         
-        dfs(s)
-        return cnt
-
+        
 #{ 
 #  Driver Code Starts
 #Initial Template for Python 3
