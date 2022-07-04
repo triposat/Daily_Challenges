@@ -29,7 +29,7 @@
 # DP
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
-        # wordDict = set(wordDict)
+        wordDict = set(wordDict)
         dp = [0]*len(s)
         for i in range(len(dp)):
             for j in range(i+1):
