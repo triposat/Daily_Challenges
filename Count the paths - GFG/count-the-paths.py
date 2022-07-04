@@ -2,14 +2,16 @@ from collections import defaultdict
 class Solution:
     def __init__(self):
         self.ans = 0
+
     def dfs(self, s, d, graph):
-            if s==d:
-                self.ans+=1
-                return
-            for x in graph[s]:
-                self.dfs(x, d, graph)
+        if s == d:
+            self.ans += 1
+            return
+        for x in graph[s]:
+            self.dfs(x, d, graph)
+
     def possible_paths(self, edges, n, s, d):
-        res=defaultdict(list)
+        res = defaultdict(list)
         for key, val in edges:
             res[key].append(val)
         self.dfs(s, d, res)
